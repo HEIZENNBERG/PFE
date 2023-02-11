@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">My_PFE</string>
+    
+    <string-array name="entreprise_categories">
+            <item>Stratégie</item>
+            <item>Marketing</item>
+            <item>Finances</item>
+            <item>Ressources humaines</item>
+            <item>Technologie et équipement</item>
+            <item>Exploitation</item>
+    </string-array>
 </resources>
