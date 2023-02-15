@@ -30,7 +30,7 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
     var categorie_holder : String = ""
 
 
-    private val CompanyCollection = Firebase.firestore.collection("entreprises")
+
     private lateinit var firebaseAuth: FirebaseAuth
 
 
@@ -58,7 +58,7 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
         entrepriseRegisterPart2.autoCompleteTextView.setAdapter(adapter)
 
 
-        // Set an OnItemSelectedListener to get the selected item
+        // Set an OnItemClickedListener to get the Clicked item
         entrepriseRegisterPart2.autoCompleteTextView.onItemClickListener = object : AdapterView.OnItemClickListener {
             override fun onItemClick(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position) as String
@@ -108,8 +108,13 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                     }
+                    val user = it.result?.user
+                    val uid = user?.uid
+                    if (uid != null) {
+                        saveCompany(entr, uid)
+                    }
                 }
-                saveCompany(entr)
+
             }
         }
 
@@ -128,11 +133,11 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
 
 
 
-    private fun saveCompany(ent : Entreprise) = CoroutineScope(Dispatchers.IO).launch {
+    private fun saveCompany(ent : Entreprise,uid : String) = CoroutineScope(Dispatchers.IO).launch {
 
         try{
-
-            CompanyCollection.add(ent).await()
+            val CompanyCollection = Firebase.firestore.collection("entreprises").document(uid)
+            CompanyCollection.set(ent).await()
 
 
             withContext(Dispatchers.Main){
@@ -143,7 +148,7 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
             }
         }catch(e: java.lang.Exception){
             withContext(Dispatchers.Main){
-                Toast.makeText(this@EntrepriseRegisterPart2, e.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@EntrepriseRegisterPart2, "Password incorrect !", Toast.LENGTH_LONG).show()
             }
         }
     }

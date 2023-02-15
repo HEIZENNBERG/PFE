@@ -20,7 +20,7 @@ class RegisterActivity : AppCompatActivity() {
 
     lateinit var registerBinding: ActivityRegisterBinding
 
-    private val StudentCollection = Firebase.firestore.collection("students")
+
     private lateinit var firebaseAuthe: FirebaseAuth
 
 
@@ -64,17 +64,21 @@ class RegisterActivity : AppCompatActivity() {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                     }
+                    val user = it.result?.user
+                    val uid = user?.uid
+                    if (uid != null) {
+                        saveStudent(stud, uid)
+                    }
                 }
-                saveStudent(stud)
             }
         }
 
     }
 
-    private fun saveStudent(std : Student) = CoroutineScope(Dispatchers.IO).launch {
+    private fun saveStudent(std : Student,uid : String) = CoroutineScope(Dispatchers.IO).launch {
         try{
-
-            StudentCollection.add(std).await()
+            val StudentCollection = Firebase.firestore.collection("students").document(uid)
+            StudentCollection.set(std).await()
 
             withContext(Dispatchers.Main){
                 Toast.makeText(this@RegisterActivity, "Votre data est bien enregistrer", Toast.LENGTH_LONG).show()
