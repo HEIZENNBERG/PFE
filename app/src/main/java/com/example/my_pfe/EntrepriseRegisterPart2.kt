@@ -4,21 +4,19 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Debug
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.example.my_pfe.databinding.ActivityEntrepriseRegisterBinding
 import com.example.my_pfe.databinding.ActivityEntrepriseRegisterPart2Binding
+import com.google.android.gms.tasks.Task
+import com.google.common.base.Ascii.toLowerCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
@@ -28,8 +26,10 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
 
     lateinit var entrepriseRegisterPart2: ActivityEntrepriseRegisterPart2Binding
     var categorie_holder : String = ""
+    var imageUri : Uri? = null
 
 
+    private lateinit var storage : StorageReference
 
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -40,12 +40,6 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
         val view = entrepriseRegisterPart2.root
         setContentView(view)
 
-
-        val getLogoImage = registerForActivityResult(
-            ActivityResultContracts.GetContent(), ActivityResultCallback {
-                // what you wanna do with the image
-            }
-        )
 
 
         // Create an ArrayAdapter to populate the dropdown menu
@@ -95,14 +89,30 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
             // second register data
             val numero = entrepriseRegisterPart2.numeroEditText.editText?.text.toString()
             val description = entrepriseRegisterPart2.descriptionEditText.editText?.text.toString()
-            //val categorie = categorie_holder
 
 
             if (numero.isBlank() || description.isBlank() || categorie_holder.isBlank()) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show()
 
             } else {
-                val entr = Entreprise(nom, code_entreprise, email, adress, numero, categorie_holder, description)
+                storage = FirebaseStorage.getInstance().reference.child("images")
+                storage = storage.child(System.currentTimeMillis().toString())
+
+                val uploadTask = imageUri?.let {
+                    storage.putFile(it)
+                } ?: throw IllegalArgumentException("Image Uri cannot be null")
+
+                uploadTask.continueWithTask { task ->
+                    if (task.isSuccessful) {
+                        storage.downloadUrl
+                    } else {
+                        throw task.exception ?: IllegalStateException("Failed to upload image")
+                    }
+                }.addOnSuccessListener { uri ->
+                    var url = uri.toString()
+
+
+                val entr = Entreprise(nom, code_entreprise, toLowerCase(email) , adress, numero, categorie_holder, description, url)
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if(it.isSuccessful){
                         val intent = Intent(this, LoginActivity::class.java)
@@ -114,7 +124,7 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
                         saveCompany(entr, uid)
                     }
                 }
-
+                }
             }
         }
 
@@ -122,7 +132,12 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
         entrepriseRegisterPart2.backImageButton.setOnClickListener {
             val intent = Intent(this, EntrepriseRegisterActivity::class.java)
             startActivity(intent)
+        }
 
+        val getLogoImage = registerForActivityResult(
+            ActivityResultContracts.GetContent()){
+
+                imageUri = it
         }
 
         entrepriseRegisterPart2.logoButton.setOnClickListener {
@@ -148,8 +163,9 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
             }
         }catch(e: java.lang.Exception){
             withContext(Dispatchers.Main){
-                Toast.makeText(this@EntrepriseRegisterPart2, "Password incorrect !", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@EntrepriseRegisterPart2, e.message, Toast.LENGTH_LONG).show()
             }
         }
     }
+
 }

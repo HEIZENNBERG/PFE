@@ -4,12 +4,24 @@
     <string name="other">other</string>
 
     <string-array name="entreprise_categories">
-        <item>Stratégie</item>
+        <item>Energie/ Environnement</item>
         <item>Marketing</item>
-        <item>Finances</item>
         <item>Ressources humaines</item>
         <item>Technologie et équipement</item>
-        <item>Exploitation</item>
+        <item>Banque/ Assurance/ Finance</item>
+        <item>Arts plastiques/ Cinéma/ Musique</item>
+        <item>Electric / Mecanique / Chimique</item>
+        <item>Construction BTP</item>
+        <item>Distribution/ Commerce</item>
+        <item>Immobilier</item>
+        <item>Informatique/ Télécom/ Internet</item>
+        <item>Marketing/ Communication</item>
+        <item>Média/ Presse/ Impression</item>
+        <item>Santé/ Médical/ Social/ Pharmacie</item>
+        <item>Services publics/ Administrations</item>
+        <item>Formation/ Education</item>
+        <item>Tourisme/ Restauration/ Hôtellerie</item>
+
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

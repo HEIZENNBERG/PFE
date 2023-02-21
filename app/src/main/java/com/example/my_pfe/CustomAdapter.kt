@@ -15,7 +15,7 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder2>() {
     var annonces_title = arrayOf("annonce1", "annonce2", "annonce3", "annonce4", "annonce5","annonce6")
     var entreprise_name = arrayOf("entreprise1", "entreprise2", "entreprise3", "entreprise4", "entreprise5","entreprise6")
     var entreprise_logo = arrayOf(R.drawable.entreprise, R.drawable.entreprise, R.drawable.entreprise, R.drawable.entreprise, R.drawable.entreprise, R.drawable.entreprise)
-    var adress = arrayOf("khrebga Larb3a", "rabat", "jadida", "casabanca", "tanger", "essaouira")
+    var adress = arrayOf("khrebga ", "rabat", "jadida", "casabanca", "tanger", "essaouira")
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder2 {

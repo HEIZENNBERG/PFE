@@ -1,5 +1,7 @@
 package com.example.my_pfe
 
+import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,16 +9,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.my_pfe.view.AnnonceInfosFragment
 import com.example.my_pfe.view.EntrepriseFragment
 import com.example.my_pfe.view.EntrepriseInfosFragement
 import org.w3c.dom.Text
+import java.util.*
+import kotlin.collections.ArrayList
 
-class EntrepriseAdapter() : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt>() {
+class EntrepriseAdapter(private val entreprisesList :ArrayList<Entreprise> ) : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt>() {
 
-    var entrepriseLogos = arrayOf(R.drawable.entreprise, R.drawable.entreprise,R.drawable.entreprise,R.drawable.entreprise)
-    var entrepriseTitles = arrayOf("entreprise1", "entreprise2", "entreprise3", "entreprise4")
-    var entrepriseDescriptions = arrayOf("description1", "description2","description3","description4")
+    private var filteredList: ArrayList<Entreprise> = ArrayList()
+
+    init {
+        filteredList.addAll(entreprisesList)
+    }
 
 
     override fun onCreateViewHolder(
@@ -28,29 +35,56 @@ class EntrepriseAdapter() : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt
     }
 
     override fun onBindViewHolder(holder: EntrepriseAdapter.ViewHolderEnt, position: Int) {
-        holder.entrepriseLogo.setImageResource(entrepriseLogos[position])
-        holder.entrepriseTitle.text = entrepriseTitles[position]
-        holder.entrepriseDescription.text = entrepriseDescriptions[position]
+
+        val entreprise = filteredList[position]
+
+        Glide.with(holder.itemView.context)
+            .load(filteredList[position].url)
+            .into(holder.entrepriseLogo)
+
+        holder.entrepriseTitle.text = filteredList[position].nom
+        holder.entrepriseDescription.text = filteredList[position].categorie
 
         holder.itemView.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
-
-                val activity=v!!.context as AppCompatActivity
-                val itemFragement = EntrepriseInfosFragement()
-                activity.supportFragmentManager.beginTransaction().replace(R.id.entreprise_frag, itemFragement).addToBackStack(null).commit()
-
+                val position = holder.adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val activity = v?.context as AppCompatActivity
+                    val itemFragement = EntrepriseInfosFragement()
+                    val args = Bundle()
+                    args.putParcelable("entreprise", entreprise)
+                    itemFragement.arguments = args
+                    activity.supportFragmentManager.beginTransaction().replace(R.id.entreprise_frag, itemFragement).addToBackStack(null).commit()
+                }
             }
         } )
     }
 
     override fun getItemCount(): Int {
-        return entrepriseTitles.size
+        return filteredList.size
+    }
+
+
+    //
+    fun filter(query: String) {
+        filteredList.clear()
+        if (query.isEmpty()) {
+            filteredList.addAll(entreprisesList)
+        } else {
+            for (entreprise in entreprisesList) {
+                if (entreprise.nom?.toLowerCase(Locale.ROOT)!!.contains(query.toLowerCase(Locale.ROOT)) || entreprise.categorie?.toLowerCase(Locale.ROOT)!!.contains(query.toLowerCase(Locale.ROOT))) {
+                    filteredList.add(entreprise)
+                }
+            }
+        }
+        notifyDataSetChanged()
     }
 
     class ViewHolderEnt(ItemView: View) : RecyclerView.ViewHolder(ItemView){
         val entrepriseLogo : ImageView = itemView.findViewById(R.id.entrepriseLogo2)
         val entrepriseTitle : TextView = itemView.findViewById(R.id.entrepriseTitle)
-        val entrepriseDescription : TextView = itemView.findViewById(R.id.entrepriseDescrption)
+        val entrepriseDescription : TextView = itemView.findViewById(R.id.entrepriseCategorie)
     }
 
 }
+

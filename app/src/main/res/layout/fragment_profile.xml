@@ -159,7 +159,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="issamhhh@gmail.com"
+                            android:text="email@gmail.com"
                             android:textSize="15sp" />
 
                     </LinearLayout>
@@ -189,6 +189,7 @@
                             android:textSize="15sp"
                             />
 
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -197,28 +198,12 @@
                         android:layout_marginTop="30dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:text="Password"
-                            android:layout_weight="1"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="#4a148c"/>
 
-                        <TextView
-                            android:id="@+id/passwordProfileEdit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="********"
-                            android:textSize="15sp" />
 
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/outlinedButton"
+                        android:id="@+id/editdButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"

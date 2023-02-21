@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import com.example.my_pfe.databinding.ActivityRegisterBinding
+import com.google.common.base.Ascii
+import com.google.common.base.Ascii.toLowerCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -58,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
 
             }
             else {
-                val stud = Student(nom, prenom, email, numero)
+                val stud = Student(nom, prenom, toLowerCase(email), numero)
                 firebaseAuthe.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if(it.isSuccessful){
                         val intent = Intent(this, LoginActivity::class.java)

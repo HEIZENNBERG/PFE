@@ -38,8 +38,13 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".MainActivityEntreprise"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true"></activity>
+
+
     </application>
 
 </manifest>

@@ -21,15 +21,15 @@ class NotificationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-       /* notificationRecyclerView = view.findViewById(R.id.notificationRecyclerView)
-        adapter = NotificationAdapter()
-        notificationRecyclerView.adapter = adapter*/
+
         return inflater.inflate(R.layout.fragment_notification, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
         notificationRecyclerView = view.findViewById(R.id.notificationRecyclerView)
         layoutManager = LinearLayoutManager(activity)
         notificationRecyclerView.layoutManager = layoutManager
