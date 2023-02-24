@@ -35,7 +35,6 @@ class LoginActivity : AppCompatActivity() {
 
             if (email.isBlank() || password.isBlank()) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show()
-
             }
             else {
                 //check the authentication email and password
