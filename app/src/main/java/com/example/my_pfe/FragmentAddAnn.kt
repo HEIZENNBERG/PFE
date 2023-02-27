@@ -28,7 +28,7 @@ class FragmentAddAnn : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_add_annonce2, container, false)
 
         val returnBtn = view.findViewById<Button>(R.id.backHM)
-        val cancelBtn = view.findViewById<Button>(R.id.cancelButton)
+
 
         returnBtn.setOnClickListener {
             // Get the FragmentManager
@@ -38,20 +38,11 @@ class FragmentAddAnn : Fragment() {
             fragmentManager.popBackStack()
         }
 
-        cancelBtn.setOnClickListener {
-            // Get the FragmentManager
-            val fragmentManager = requireActivity().supportFragmentManager
 
-            // Pop the current fragment and return to the previous one
-            fragmentManager.popBackStack()
-        }
 
         return view
     }
 
-  /*  override fun onDetach() {
-        super.onDetach()
-        (activity as MainActivityEntreprise).enableListeners()
-    }*/
+
 
 }

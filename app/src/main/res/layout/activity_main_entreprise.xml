@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/entrepriseRecyclerView"
+        android:id="@+id/announceRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

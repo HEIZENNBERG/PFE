@@ -11,10 +11,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.my_pfe.Entreprise
-import com.example.my_pfe.EntrepriseAdapter
-import com.example.my_pfe.NotificationAdapter
-import com.example.my_pfe.R
+import com.example.my_pfe.*
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,7 +22,8 @@ class EntrepriseFragment : Fragment() {
 
     lateinit var layoutManager : RecyclerView.LayoutManager
      var adapter : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt> ?= null
-    lateinit var entrepriseRecyclerView: RecyclerView
+
+    private lateinit var entrepriseRecyclerView: RecyclerView
     private lateinit var entrepriseList : ArrayList<Entreprise>
     private var db = Firebase.firestore
 
