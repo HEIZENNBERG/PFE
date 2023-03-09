@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentAddAnnonceTest"
-    >
+    tools:context=".AddEntrepriseAnnounce">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,15 +35,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/goBackToHome"
+            android:id="@+id/addAnnounce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="add"
+            app:layout_constraintBottom_toTopOf="@+id/cancelButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/cancelButton"
@@ -55,8 +53,7 @@
             android:text="CANCEL"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/goBackToHome" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout4"
@@ -66,7 +63,7 @@
             android:layout_marginBottom="10dp"
             android:orientation="vertical"
             android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/goBackToHome"
+            app:layout_constraintBottom_toTopOf="@+id/addAnnounce"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -128,4 +125,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

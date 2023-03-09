@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -14,16 +15,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#2E86C1">
+            android:background="#F4364C">
 
             <TextView
                 android:id="@+id/entre_annonceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="Annonce Name"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +40,31 @@
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/entre_annonceName" />
+
+            <TextView
+                android:id="@+id/dateAnnonce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="00/00/0000"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@+id/entre_annonceName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/entre_annonceName" />
+
+            <ImageButton
+                android:id="@+id/deleteEntrepriseEnnounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="#00FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/baseline_delete_24" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

@@ -59,7 +59,6 @@ class EntrepriseRegisterPart2 : AppCompatActivity() {
                 // Use the selected item as needed
                 categorie_holder = selectedItem
             }
-
         }
 
         entrepriseRegisterPart2.etudiantButton.setOnClickListener {

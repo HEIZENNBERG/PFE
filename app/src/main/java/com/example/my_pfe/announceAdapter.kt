@@ -1,14 +1,20 @@
 package com.example.my_pfe
 
+import android.content.ClipData
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.my_pfe.view.AnnonceInfosFragment
 
- class announceAdapter(private var announcelist : ArrayList<AnnonceItem>) : RecyclerView.Adapter<announceAdapter.MyViewHolder>() {
-
-
+class announceAdapter(
+     private var announcelist: ArrayList<AnnonceItem>,
+     mainActivityEntreprise: MainActivityEntreprise,
+     private val itemClickListener: OnItemClickListener
+ ) : RecyclerView.Adapter<announceAdapter.MyViewHolder>() {
 
      override fun onCreateViewHolder(
          parent: ViewGroup,
@@ -23,13 +29,16 @@ import androidx.recyclerview.widget.RecyclerView
 
          holder.announceTitle.text  = announcelist[position].nomAnnonce
          holder.announceDepartment.text = announcelist[position].departement
+
+         holder.itemView.setOnClickListener {
+             itemClickListener.onItemClick(position)
+         }
      }
 
 
     override fun getItemCount(): Int {
         return announcelist.size
     }
-
 
      class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val announceTitle : TextView = itemView.findViewById(R.id.entre_annonceName)

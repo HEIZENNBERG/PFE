@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.my_pfe.databinding.ActivityEntrepriseProfileBinding
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -17,12 +17,32 @@ import com.google.firebase.ktx.Firebase
 class EntrepriseProfile : AppCompatActivity() {
 
     lateinit var entrepriseProfileBinding: ActivityEntrepriseProfileBinding
+    var categorie_holder : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         entrepriseProfileBinding = ActivityEntrepriseProfileBinding.inflate(layoutInflater)
         val view = entrepriseProfileBinding.root
         setContentView(view)
+
+        // Create an ArrayAdapter to populate the dropdown menu
+        val categories = resources.getStringArray(R.array.entreprise_categories)
+        val adapter = ArrayAdapter(this, R.layout.list_categorie, categories)
+        adapter.setDropDownViewResource(R.layout.list_categorie)
+
+
+        // Get the dropdown menu view and set the adapter
+        entrepriseProfileBinding.autoCompleteTextView.setAdapter(adapter)
+
+
+        // Set an OnItemClickedListener to get the Clicked item
+        entrepriseProfileBinding.autoCompleteTextView.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedItem = parent.getItemAtPosition(position) as String
+                // Use the selected item as needed
+                categorie_holder = selectedItem
+            }
+        }
 
         entrepriseProfileBinding.backHome.setOnClickListener {
             val intent = Intent(this, MainActivityEntreprise::class.java)
@@ -45,7 +65,7 @@ class EntrepriseProfile : AppCompatActivity() {
                 if (document != null && document.exists()) {
 
                     val nom = document.getString("nom")
-                    val categorie = document.getString("categorie")
+                    //val categorie = document.getString("categorie")
                     val email = document.getString("email")
                     val description = document.getString("description")
                     val numero = document.getString("numero")
@@ -61,22 +81,23 @@ class EntrepriseProfile : AppCompatActivity() {
                         .into(imageView)
 
                     // get references to TextViews
-                    val categoryTextView = view?.findViewById<TextView>(R.id.entCategorieProfileEdit)
-                    val upEmailTextView = view?.findViewById<TextView>(R.id.profileEmail)
-                    val adressTextView = view?.findViewById<TextView>(R.id.entAdressProfileEdit)
-                    val nomTextView =  view?.findViewById<TextView>(R.id.entrepriseProfileName)
-                    val descriptionTextView =  view?.findViewById<TextView>(R.id.entDescriptionProfileEdit)
-                    val emailTextView =  view?.findViewById<TextView>(R.id.emailProfileEdit)
-                    val numeroTextView =  view?.findViewById<TextView>(R.id.phoneNumProfileEdit)
+                    //val categoryTextView = view?.findViewById<TextInputEditText>(R.id.entCategorieProfileEdit)
+                   // val test = entrepriseProfileBinding.entCategorieProfileEdit
+                    val upEmailTextView = entrepriseProfileBinding.profileEmail
+                    val adressTextView = entrepriseProfileBinding.entAdressProfileEdit
+                    val nomTextView = entrepriseProfileBinding.entrepriseProfileName
+                    val descriptionTextView = entrepriseProfileBinding.entDescriptionProfileEdit
+                    //val emailTextView = entrepriseProfileBinding.emailProfileEdit
+                    val numeroTextView =  entrepriseProfileBinding.entNTProfileEdit
 
                     // set text values of TextViews
-                    categoryTextView?.text = categorie
+                    //test.editText?.setText(categorie)
                     upEmailTextView?.text = email
-                    descriptionTextView?.text = description
+                    descriptionTextView.editText?.setText(description)
                     nomTextView?.text = nom
-                    adressTextView?.text = adress
-                    emailTextView?.text = email
-                    numeroTextView?.text = numero
+                    adressTextView.editText?.setText(adress)
+                    //emailTextView?.setText("email")
+                    numeroTextView.editText?.setText(numero)
                 } else {
                     // document not found
                     Log.d(ContentValues.TAG, "No such document")

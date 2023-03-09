@@ -38,20 +38,10 @@
                 android:layout_marginLeft="15dp"
                 android:gravity="center"
                 android:text="Entreprise Name"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
-
-
-        <ImageView
-            android:id="@+id/entrepriseNotification"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/notification" />
-
 
     </LinearLayout>
 
@@ -79,14 +69,17 @@
         app:layout_constraintTop_toBottomOf="@+id/entrepriseSearch"
         tools:listitem="@layout/entreprise_annonce" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addAnn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:backgroundTint="#FFEB3B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:srcCompat="@drawable/baseline_add_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

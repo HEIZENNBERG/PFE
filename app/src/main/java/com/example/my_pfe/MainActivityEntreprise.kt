@@ -1,9 +1,12 @@
 package com.example.my_pfe
 
+import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class MainActivityEntreprise : AppCompatActivity(){
+class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
 
     lateinit var mainBinding: ActivityMainEntrepriseBinding
     lateinit var announceRecyclerView: RecyclerView
@@ -36,11 +39,12 @@ class MainActivityEntreprise : AppCompatActivity(){
         setContentView(view)
 
         announceRecyclerView = view.findViewById(R.id.announceRecyclerView)
-
         layoutManager = LinearLayoutManager(this)
         announceRecyclerView.layoutManager = layoutManager
 
         announceList = arrayListOf()
+
+        //mainBinding.addAnn.visibility = VISIBLE
 
         db = FirebaseFirestore.getInstance()
         db.collection("entreprises").document(entrepriseId!!).collection("annonces").get().addOnSuccessListener {
@@ -51,9 +55,8 @@ class MainActivityEntreprise : AppCompatActivity(){
                         announceList.add(announce)
                     }
                 }
-                adapter = announceAdapter(announceList)
+                adapter = announceAdapter(announceList, this, this)
                 announceRecyclerView.adapter = adapter
-
 
             }
         }.addOnFailureListener{
@@ -81,27 +84,10 @@ class MainActivityEntreprise : AppCompatActivity(){
                 }
             }
 
-            mainBinding.entrepriseNotification.setOnClickListener {
-                if(isListnersEnabeld)
-                {
-                    val intent = Intent(this, EntrepriseNotification::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-
-            mainBinding.entrepriseNotification.setOnClickListener {
-                if(isListnersEnabeld){
-                    val intent = Intent(this, EntrepriseNotification::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-
         mainBinding.addAnn.setOnClickListener {
             if(isListnersEnabeld)
             {
-                val fragment = FragmentAddAnnonceTest()
+                /*val fragment = FragmentAddAnnonceTest()
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
                 ft.replace(R.id.entrepriseMainMenu, fragment)
@@ -109,7 +95,12 @@ class MainActivityEntreprise : AppCompatActivity(){
                 ft.commit()
                 // Stop the activity from working
                 isListnersEnabeld = false
+                mainBinding.addAnn.visibility = INVISIBLE*/
+                val intent = Intent(this, AddEntrepriseAnnounce::class.java)
+                startActivity(intent)
+                finish()
             }
+
         }
         displayHeaderInfo(view)
     }
@@ -117,9 +108,6 @@ class MainActivityEntreprise : AppCompatActivity(){
     fun enableListeners() {
         isListnersEnabeld = true
     }
-
-
-
 
     fun displayHeaderInfo(view : View){
 
@@ -142,6 +130,12 @@ class MainActivityEntreprise : AppCompatActivity(){
                     nomTextView?.text = nom
                 }
             }
+    }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(this, EntrepriseAnnounceInfos::class.java)
+        intent.putExtra("name", announceList[position].nomAnnonce)
+        startActivity(intent)
     }
 
 }

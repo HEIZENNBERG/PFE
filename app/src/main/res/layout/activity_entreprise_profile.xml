@@ -30,9 +30,10 @@
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="360dp"
-                    android:background="@drawable/top_background"
+                    android:layout_height="150dp"
+                    android:background="@drawable/top_background2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -50,14 +51,14 @@
 
                 <ImageView
                     android:id="@+id/entrepriseProfileimage"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/profile"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/entreprise"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
                 <TextView
                     android:id="@+id/entrepriseProfileName"
@@ -65,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="Entreprise Name"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +79,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="entreprise@gmail.com"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,9 +88,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/profile_center_bg"
+                    android:padding="5dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -100,105 +100,99 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="20dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/categorieEditText"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_weight="1"
-                            android:text="Categorie"
-                            android:textColor="#4a148c"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:hint="Categorie"
+                            app:startIconDrawable="@drawable/baseline_category_24"
+                            >
 
-                        <TextView
-                            android:id="@+id/entCategorieProfileEdit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Informatique"
-                            android:textSize="15sp" />
+                            <AutoCompleteTextView
+                                android:id="@+id/autoCompleteTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="none"
+                                tools:text="choiser" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_weight="1"
-                            android:text="Adress"
-                            android:textColor="#4a148c"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/entAdressProfileEdit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Essaouira ghezoua"
-                            android:textSize="15sp" />
+                            android:layout_marginTop="7dp"
+                            android:hint="ADRESS"
+                            app:startIconDrawable="@drawable/location_icon"
+                            app:startIconContentDescription="test">>
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_weight="1"
-                            android:text="Numero de Tele"
-                            android:textColor="#4a148c"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/entNTProfileEdit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="010145684"
-                            android:textSize="15sp" />
+                            android:layout_marginTop="7dp"
+                            android:hint="NUM TELEFON"
+                            app:startIconDrawable="@drawable/baseline_phone_24"
+                            app:startIconContentDescription="test">>
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:text="Description"
-
-                            android:textColor="#4a148c"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/entDescriptionProfileEdit"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="million of them, or if of palettes focused on fd web safe colors."
-                            android:textSize="15sp" />
+                            android:layout_marginTop="7dp"
 
+                            android:hint="DESCRIPTION"
+                            app:startIconDrawable="@drawable/baseline_description_24"
+                            app:startIconContentDescription="test">>
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
@@ -216,8 +210,8 @@
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        android:text="Edit Profile"
+                        android:layout_marginTop="10dp"
+                        android:text="UPDATE"
                         app:icon="@drawable/edit_icon" />
 
                 </LinearLayout>

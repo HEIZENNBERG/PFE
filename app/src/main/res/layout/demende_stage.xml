@@ -16,7 +16,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#D7BDE2">
+            android:background="#693C5E">
 
 
             <ImageView
@@ -35,19 +35,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Issam ERRAFIY"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/stagaireImage"
                 app:layout_constraintTop_toTopOf="@+id/stagaireImage" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/stagaireDiplome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:text="Specialite de stagere"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/stagaireImage"
                 app:layout_constraintTop_toBottomOf="@+id/stagaireName" />
 

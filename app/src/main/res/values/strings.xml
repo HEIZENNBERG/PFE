@@ -21,8 +21,17 @@
         <item>Services publics/ Administrations</item>
         <item>Formation/ Education</item>
         <item>Tourisme/ Restauration/ Hôtellerie</item>
-
     </string-array>
+
+    <string-array name="entreprise_departements">
+        <item>Production</item>
+        <item>Marketing</item>
+        <item>Recherche et Développement</item>
+        <item>Comptabilité et Finance</item>
+        <item>Ressources humaines</item>
+        <item>Service Client </item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

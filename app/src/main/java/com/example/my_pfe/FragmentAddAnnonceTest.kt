@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -16,9 +15,9 @@ import com.google.firebase.ktx.Firebase
 
 class FragmentAddAnnonceTest : Fragment() {
 
+    lateinit var addAnnounceBtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -29,13 +28,17 @@ class FragmentAddAnnonceTest : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_annonce_test, container, false)
         val returnToHome = view.findViewById<Button>(R.id.goBackToHome)
         val cancelBtn = view.findViewById<Button>(R.id.cancelButton)
-        
+
+      //  addAnnounceBtn = view.findViewById(R.id.addAnn)
+
         cancelBtn.setOnClickListener {
             // Get the FragmentManager
             val fragmentManager = requireActivity().supportFragmentManager
 
             // Pop the current fragment and return to the previous one
             fragmentManager.popBackStack()
+
+            //addAnnounceBtn.visibility = VISIBLE
         }
         returnToHome.setOnClickListener {
 

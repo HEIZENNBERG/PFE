@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.example.my_pfe.R
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -57,18 +58,24 @@ class ProfileFragment : Fragment() {
                     // get references to TextViews
                     val upEmailTextView = view?.findViewById<TextView>(R.id.profileEmail)
                     val fullNameTextView = view?.findViewById<TextView>(R.id.profileName)
-                    val nomTextView =  view?.findViewById<TextView>(R.id.nomProfileEdit)
-                    val prenomTextView =  view?.findViewById<TextView>(R.id.prenomProfileEdit)
-                    val emailTextView =  view?.findViewById<TextView>(R.id.emailProfileEdit)
-                    val numeroTextView =  view?.findViewById<TextView>(R.id.phoneNumProfileEdit)
+                    val nomTextView =  view?.findViewById<TextInputLayout>(R.id.nomProfileEdit)
+                    val prenomTextView =  view?.findViewById<TextInputLayout>(R.id.prenomProfileEdit)
+                    //val emailTextView =  view?.findViewById<TextView>(R.id.emailProfileEdit)
+                    val numeroTextView =  view?.findViewById<TextInputLayout>(R.id.phoneNumProfileEdit)
 
                     // set text values of TextViews
                     upEmailTextView?.text = email
                     fullNameTextView?.text = nom +" "+prenom
-                    nomTextView?.text = nom
-                    prenomTextView?.text = prenom
-                    emailTextView?.text = email
-                    numeroTextView?.text = numero
+                    if (nomTextView != null) {
+                        nomTextView.editText?.setText(nom)
+                    }
+                    if (prenomTextView != null) {
+                        prenomTextView.editText?.setText(prenom)
+                    }
+                    //emailTextView?.text = email
+                    if (numeroTextView != null) {
+                        numeroTextView.editText?.setText(numero)
+                    }
                 } else {
                     // document not found
                     Log.d(TAG, "No such document")
