@@ -52,6 +52,16 @@
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogoNotif"
                 app:layout_constraintTop_toBottomOf="@+id/entrepriseTitleNotif" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00/00/0000"
+                app:layout_constraintBottom_toBottomOf="@+id/annonceNotif"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintStart_toEndOf="@+id/annonceNotif"
+                app:layout_constraintTop_toTopOf="@+id/annonceNotif" />
+
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"

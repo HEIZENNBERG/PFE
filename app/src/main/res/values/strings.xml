@@ -32,6 +32,12 @@
         <item>Service Client </item>
     </string-array>
 
+    <string-array name="type_stage">
+        <item>Observation</item>
+        <item>Fin etude</item>
+        <item>paye</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

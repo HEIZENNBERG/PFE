@@ -74,6 +74,17 @@
                 app:layout_constraintEnd_toStartOf="@+id/containedButton"
                 app:layout_constraintTop_toTopOf="@+id/containedButton" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00/00/0000"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/stagaireDiplome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/stagaireDiplome"
+                app:layout_constraintTop_toTopOf="@+id/stagaireDiplome" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
