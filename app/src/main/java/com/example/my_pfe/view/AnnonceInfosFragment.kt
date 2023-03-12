@@ -1,20 +1,33 @@
 package com.example.my_pfe.view
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.Navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.my_pfe.AnnonceItem
+import com.example.my_pfe.Demande
 import com.example.my_pfe.Entreprise
 import com.example.my_pfe.R
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+
 import java.io.IOException
+import java.util.*
 
 
 class AnnonceInfosFragment : Fragment() {
@@ -24,6 +37,11 @@ class AnnonceInfosFragment : Fragment() {
     lateinit var typeStage : TextInputLayout
     lateinit var importcv : Button
     lateinit var submit : Button
+    private lateinit var storage : StorageReference
+    lateinit var demande : Demande
+    private lateinit var firestore: FirebaseFirestore
+
+    private var uri: Uri? = null // Declare uri variable outside of lambda
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,19 +52,9 @@ class AnnonceInfosFragment : Fragment() {
         val imageView = view.findViewById<ImageView>(R.id.entrepriseLogo)
 
         // Create an array of items to display
-        val items = arrayOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
-        // Create an ArrayAdapter to populate the dropdown menu
-        //val stages = resources.getStringArray(R.array.type_stage)
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_categorie, items)
-        adapter.setDropDownViewResource(R.layout.list_categorie)
 
-        // Create an ArrayAdapter to display the items
-        //val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, items)
 
-        // Set the adapter for the ListView
-       // list_view.adapter = adapter
 
-// Load the image using Glide and set it to the ImageView in your layout
 
         Glide.with(this)
             .load(imageUrl)
@@ -62,6 +70,7 @@ class AnnonceInfosFragment : Fragment() {
 
     }
 
+    @SuppressLint("Recycle")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,41 +84,99 @@ class AnnonceInfosFragment : Fragment() {
         submit = view.findViewById(R.id.submitDemende)
 
 
+
         val selectFileLauncher = registerForActivityResult(
-            ActivityResultContracts.GetContent(),
-            { uri ->
-                if (uri != null) {
-                    try {
-                        val inputStream = requireActivity().contentResolver.openInputStream(uri)
-                        // Read the contents of the file using the input stream
-                        inputStream?.close()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
+            ActivityResultContracts.GetContent()
+        ) { uri ->
+            if (uri != null) {
+                try {
+
+                    this.uri = uri
+                    val inputStream = requireActivity().contentResolver.openInputStream(uri)
+                    // Read the contents of the file using the input stream
+                    inputStream?.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        // importcv = view.findViewById<Button>(R.id.selectFileButton)
+        importcv.setOnClickListener { selectFileLauncher.launch("application/pdf") } // you can set specific mime types like "application/pdf"
+
+        submit.setOnClickListener {
+
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            val db = FirebaseFirestore.getInstance()
+            val studentRef = db.collection("students").document(userId!!)
+
+            studentRef.get().addOnSuccessListener { document ->
+                if (typeStage.editText?.text.toString().isBlank()){
+                    Toast.makeText(context, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show()
+                }
+                else{
+                    if (uri == null) {
+                        Toast.makeText(context, "Veuillez sélectionner un fichier PDF", Toast.LENGTH_LONG).show()
+                    } else if (document.exists()) {
+                        val nom = document.getString("nom")
+                        val prenom = document.getString("prenom")
+
+                        // Get a reference to the Firebase Storage instance
+                        val storage = Firebase.storage
+                        // Create a reference to the CVs folder and the file with the user ID as the name
+                        val storageRef = storage.reference.child("CVs/${userId}.pdf")
+                        // Get the InputStream of the selected file
+                        val inputStream = requireActivity().contentResolver.openInputStream(uri!!)
+                        // Read the contents of the file into a byte array
+                        val bytes = inputStream?.readBytes()
+                        // Upload the file to Firebase Storage
+                        val uploadTask = storageRef.putBytes(bytes!!)
+                        uploadTask.addOnSuccessListener {
+                            // Get the download URL of the uploaded file
+                            storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
+                                // Create a new demande document in the demandes subcollection
+                                val demandesRef = db.collection("entreprises")
+                                    .document(annonce.entrepriseId.toString())
+                                    .collection("annonces")
+                                    .document(annonce.id.toString())
+                                    .collection("demandes").document(userId)
+                                var demande = Demande(
+                                    nom.toString(),
+                                    prenom.toString(),
+                                    typeStage.editText?.text.toString(),
+                                    downloadUri.toString(),
+                                    "pas de reponce",
+                                    Date(),
+                                    annonce.id.toString(),
+                                    userId
+                                )
+                                try {
+                                    demandesRef.set(demande)
+                                    // Get the FragmentManager
+                                    val fragmentManager = parentFragmentManager
+
+                                    // Pop the current fragment and return to the previous one
+                                    fragmentManager.popBackStack()
+
+                                    Toast.makeText(
+                                        context,
+                                        "Votre demande est bien envoyée",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                } catch (e: java.lang.Exception) {
+                                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        }.addOnFailureListener {
+                            Toast.makeText(
+                                context,
+                                "Échec de l'envoi du fichier : ${it.message}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             }
-        )
-       // importcv = view.findViewById<Button>(R.id.selectFileButton)
-        importcv.setOnClickListener { selectFileLauncher.launch("application/pdf") } // you can set specific mime types like "application/pdf"
-
-
-        // Create an ArrayAdapter to populate the dropdown menu
-       /* val stages = resources.getStringArray(R.array.type_stage)
-        val adapter = ArrayAdapter(this.requireContext(), R.layout.list_categorie, stages)
-        adapter.setDropDownViewResource(R.layout.list_categorie)*/
-
-        // Get the dropdown menu view and set the adapter
-       /* val demendeStage : TextInputLayout = view.findViewById(R.id.demendeStageEditText)
-        val demendeEditText = demendeStage.editText*/
-        //(demendeEditText as? AutoCompleteTextView)?.setAdapter(adapter)
-
-
-       /* val itemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            val selectedItem = parent.getItemAtPosition(position) as String
-            Toast.makeText(requireContext(), "You selected $selectedItem", Toast.LENGTH_SHORT).show()
-        }*/
-
-       // (demendeEditText as? AutoCompleteTextView)?.setOnItemClickListener(itemClickListener)
+        }
 
         returnBtn.setOnClickListener {
             // Get the FragmentManager

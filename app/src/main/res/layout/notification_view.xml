@@ -14,10 +14,11 @@
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="5dp"
-            android:background="#5DFF6D">
+            android:background="#70FF7E">
 
             <ImageView
                 android:id="@+id/entrepriseLogoNotif"
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="ENTREPRISE NAME"
                 android:textColor="@color/black"
                 android:textSize="17sp"
@@ -46,14 +47,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="5dp"
                 android:textSize="17sp"
                 android:text="annonce name"
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogoNotif"
                 app:layout_constraintTop_toBottomOf="@+id/entrepriseTitleNotif" />
+            <TextView
+                android:id="@+id/confirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="5dp"
+                android:textSize="17sp"
+                android:text="not answered"
+                app:layout_constraintStart_toEndOf="@+id/entrepriseLogoNotif"
+                app:layout_constraintTop_toBottomOf="@+id/annonceNotif" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/dateDemande"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/0000"

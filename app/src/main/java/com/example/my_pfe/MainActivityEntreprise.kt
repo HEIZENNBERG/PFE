@@ -87,15 +87,6 @@ class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
         mainBinding.addAnn.setOnClickListener {
             if(isListnersEnabeld)
             {
-                /*val fragment = FragmentAddAnnonceTest()
-                val fm = supportFragmentManager
-                val ft = fm.beginTransaction()
-                ft.replace(R.id.entrepriseMainMenu, fragment)
-                ft.addToBackStack(null)
-                ft.commit()
-                // Stop the activity from working
-                isListnersEnabeld = false
-                mainBinding.addAnn.visibility = INVISIBLE*/
                 val intent = Intent(this, AddEntrepriseAnnounce::class.java)
                 startActivity(intent)
                 finish()
@@ -135,6 +126,8 @@ class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
     override fun onItemClick(position: Int) {
         val intent = Intent(this, EntrepriseAnnounceInfos::class.java)
         intent.putExtra("name", announceList[position].nomAnnonce)
+        intent.putExtra("id", announceList[position].id)
+        intent.putExtra("entrepriseId", announceList[position].entrepriseId)
         startActivity(intent)
     }
 

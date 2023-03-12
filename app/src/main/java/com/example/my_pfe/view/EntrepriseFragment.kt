@@ -68,7 +68,6 @@ class EntrepriseFragment : Fragment() {
             //Toast.makeText(this , it.toString(), Toast.LENGTH_SHORT).show()
         }
 
-        adapter = EntrepriseAdapter(entrepriseList)
 
         // when the search is used the filter function in adapter called
         val searchView = view.findViewById<SearchView>(R.id.entrepriseSearch)

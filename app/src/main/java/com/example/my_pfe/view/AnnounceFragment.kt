@@ -49,6 +49,7 @@ class AnnounceFragment : Fragment() {
                         if (!annonces.isEmpty) {
                             for (annonce in annonces.documents) {
                                 val annonceItem : AnnonceItem? = annonce.toObject(AnnonceItem::class.java)
+                                annonceItem?.id = annonce.id
                                 if (annonceItem != null) {
                                     announceList.add(annonceItem)
                                 }

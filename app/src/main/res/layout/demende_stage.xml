@@ -52,8 +52,20 @@
                 app:layout_constraintStart_toEndOf="@+id/stagaireImage"
                 app:layout_constraintTop_toBottomOf="@+id/stagaireName" />
 
+            <TextView
+                android:id="@+id/confirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="0000"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/stagaireImage"
+                app:layout_constraintTop_toBottomOf="@+id/stagaireDiplome" />
+
             <Button
-                android:id="@+id/containedButton"
+                android:id="@+id/accepteDemende"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="15dp"
@@ -70,12 +82,12 @@
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
                 android:text="CANCEL"
-                app:layout_constraintBottom_toBottomOf="@+id/containedButton"
-                app:layout_constraintEnd_toStartOf="@+id/containedButton"
-                app:layout_constraintTop_toTopOf="@+id/containedButton" />
+                app:layout_constraintBottom_toBottomOf="@+id/accepteDemende"
+                app:layout_constraintEnd_toStartOf="@+id/accepteDemende"
+                app:layout_constraintTop_toTopOf="@+id/accepteDemende" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/dateDemande"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/0000"

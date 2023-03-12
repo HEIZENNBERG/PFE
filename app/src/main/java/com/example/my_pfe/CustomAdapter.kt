@@ -13,6 +13,7 @@ import com.example.my_pfe.view.AnnonceInfosFragment
 import com.example.my_pfe.view.EntrepriseInfosFragement
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -47,7 +48,7 @@ class CustomAdapter(private val announceList :ArrayList<AnnonceItem>) : Recycler
         holder.entrepriseName.text = filteredList[position].nom
         holder.adress.text = filteredList[position].adress
         holder.annonceTitle.text = filteredList[position].nomAnnonce
-
+        holder.date.text = SimpleDateFormat("dd/MM/yy HH:mm").format(filteredList[position].date!!)
 
         holder.itemView.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
@@ -92,6 +93,7 @@ class CustomAdapter(private val announceList :ArrayList<AnnonceItem>) : Recycler
         val annonceTitle: TextView = itemView.findViewById(R.id.annonceTitle)
         val entrepriseName : TextView = itemView.findViewById(R.id.entrepriseName)
         val adress : TextView = itemView.findViewById(R.id.entrepriseAdress)
+        val date : TextView = itemView.findViewById(R.id.annonceDate)
     }
 
 

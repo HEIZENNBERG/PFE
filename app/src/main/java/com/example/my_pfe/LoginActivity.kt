@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.my_pfe.databinding.ActivityLoginBinding
+import com.google.common.base.Ascii
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -30,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         loginBinding.loginButton.setOnClickListener{
-            val email = loginBinding.emailEditText.editText?.text.toString()
+            val email = loginBinding.emailEditText.editText?.text.toString().lowercase()
             val password = loginBinding.passwordEditText.editText?.text.toString()
 
             if (email.isBlank() || password.isBlank()) {
