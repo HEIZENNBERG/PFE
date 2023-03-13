@@ -85,9 +85,7 @@ class EntrepriseFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String): Boolean {
 
-                (adapter as EntrepriseAdapter)?.filter(newText)
                 return true
-
 
             }
         })

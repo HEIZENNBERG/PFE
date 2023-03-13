@@ -57,8 +57,9 @@ class EntrepriseAnnounceInfos : AppCompatActivity(), OnItemClickListener {
         }
 
 
-
         entrepriseAnnonceInfosBinding.goBackFromAnnonce.setOnClickListener {
+            val intent = Intent(this, MainActivityEntreprise::class.java)
+            startActivity(intent)
             finish()
         }
 
