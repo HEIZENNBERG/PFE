@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    val drawarLayout = findViewById<DrawerLayout>(R.id.drawarLayout)
+        val drawarLayout = findViewById<DrawerLayout>(R.id.drawarLayout)
         val imgMenu = findViewById<ImageView>(R.id.imgMenu)
 
         val navView = findViewById<NavigationView>(R.id.navDawar)
@@ -47,14 +47,6 @@ class MainActivity : AppCompatActivity() {
 
         displayStudentInfo()
     }
-
-    private fun replaceFragement(announceFragment: AnnounceFragment) {
-        val fragementManager = supportFragmentManager
-        val fragementTransaction = fragementManager.beginTransaction()
-        fragementTransaction.replace(R.id.annoncefrag, announceFragment)
-        fragementTransaction.commit()
-    }
-
 
     private fun displayStudentInfo() {
         val db = Firebase.firestore

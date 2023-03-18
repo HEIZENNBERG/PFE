@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_bg"
+    android:background="@drawable/background05"
     android:orientation="vertical"
     android:padding="25dp"
     tools:context=".EntrepriseRegisterPart2">
@@ -37,8 +37,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="REGISTER"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="30sp"
+                android:fontFamily="@font/f7"
+                android:textColor="@color/black"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,7 +87,6 @@
                 android:layout_height="65dp"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:weightSum="4"
                 android:gravity="center">
 
                 <Button
@@ -94,7 +94,7 @@
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:text="Logo"
                     android:textColor="@color/black" />
 

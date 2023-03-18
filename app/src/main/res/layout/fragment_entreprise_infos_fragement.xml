@@ -20,16 +20,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/goBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -80,6 +70,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="end"
+                        android:layout_marginEnd="30dp"
                         android:text="email d'entreprise"
                         android:textSize="15sp" />
 
@@ -107,6 +99,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="nom d'entreprise"
+                        android:gravity="end"
+                        android:layout_marginEnd="30dp"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -132,6 +126,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="end"
+                        android:layout_marginEnd="30dp"
                         android:text="categorie d'entreprise"
                         android:textSize="15sp" />
 
@@ -149,6 +145,7 @@
                         android:layout_marginLeft="30dp"
                         android:layout_weight="1"
                         android:text="Numero de tele"
+
                         android:textColor="#4a148c"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -159,6 +156,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="0101001010"
+                        android:gravity="end"
+                        android:layout_marginEnd="30dp"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -184,6 +183,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="end"
+                        android:layout_marginEnd="30dp"
                         android:text="desription d'entreprise"
                         android:textSize="15sp" />
 

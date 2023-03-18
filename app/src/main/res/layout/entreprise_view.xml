@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="15dp"
@@ -17,16 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="5dp"
-            android:background="#F5D5D5">
+            >
 
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/entrepriseLogo2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/entreprise" />
+                android:src="@drawable/icon3"/>
 
             <TextView
                 android:id="@+id/entrepriseTitle"
@@ -36,8 +37,8 @@
                 android:layout_marginTop="5dp"
                 android:text="ENTREPRISE NAME"
                 android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
+                android:fontFamily="@font/f2"
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogo2"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="7dp"
-                android:textSize="14sp"
+                android:textSize="16sp"
+                android:textColor="@color/silver"
                 android:text="B user can return to it by pressing "
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogo2"
                 app:layout_constraintTop_toBottomOf="@+id/entrepriseTitle" />

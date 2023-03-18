@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
-    android:background="@drawable/welcome_bg"
+    android:background="@drawable/background05"
     android:orientation="vertical"
     android:paddingHorizontal="25dp"
     android:gravity="center"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="30dp"
-        app:cardElevation="10dp">
+        app:cardElevation="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,8 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="REGISTER"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/f7"
+                android:textSize="30sp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +69,7 @@
                 android:id="@+id/nameEditText"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:hint="Nom">
 
@@ -80,7 +82,7 @@
                 android:id="@+id/prenomEditText"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Prenom">
 
@@ -93,7 +95,7 @@
                 android:id="@+id/numEditText"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Numero de telephone">
 
@@ -106,7 +108,7 @@
                 android:id="@+id/emailEditText"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Email">
 
@@ -119,7 +121,7 @@
                 android:id="@+id/passwordEditText"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Password"
                 app:endIconMode="password_toggle">>

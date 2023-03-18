@@ -15,7 +15,6 @@ import com.example.my_pfe.R
 
 class EntrepriseInfosFragement() : Fragment() {
 
-    lateinit var returnBtn : ImageButton
     private lateinit var entreprise: Entreprise
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,15 +56,7 @@ class EntrepriseInfosFragement() : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_entreprise_infos_fragement, container, false)
 
-        returnBtn = view.findViewById(R.id.goBack)
-
-        returnBtn.setOnClickListener {
-            // Get the FragmentManager
-            val fragmentManager = parentFragmentManager
-
-            // Pop the current fragment and return to the previous one
-            fragmentManager.popBackStack()
-        }
+        view.setOnTouchListener { _, _ -> true }
 
         return view
     }

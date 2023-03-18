@@ -15,7 +15,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:elevation="16dp"
-            android:background="@color/white"
+            android:background="#F8D6D6"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize">
             <ImageView
@@ -30,9 +30,10 @@
                 android:text="@string/app_name"
                 android:layout_gravity="center"
                 android:textStyle="bold|normal"
-                android:textSize="18sp"
+                android:textSize="25sp"
+                android:fontFamily="@font/f7"
                 android:layout_margin="15dp"
-                android:textColor="#673AB7"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

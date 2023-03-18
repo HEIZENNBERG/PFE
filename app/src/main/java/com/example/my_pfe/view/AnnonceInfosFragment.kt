@@ -32,7 +32,6 @@ import java.util.*
 
 class AnnonceInfosFragment : Fragment() {
 
-    lateinit var returnBtn : ImageButton
     private lateinit var annonce: AnnonceItem
     lateinit var typeStage : TextInputLayout
     lateinit var importcv : Button
@@ -77,8 +76,8 @@ class AnnonceInfosFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_annonce_infos, container, false)
+        view.setOnTouchListener { _, _ -> true }
 
-        returnBtn = view.findViewById(R.id.goBack)
         typeStage = view.findViewById(R.id.typeStageEditText)
         importcv = view.findViewById(R.id.importCV)
         submit = view.findViewById(R.id.submitDemende)
@@ -176,14 +175,6 @@ class AnnonceInfosFragment : Fragment() {
                     }
                 }
             }
-        }
-
-        returnBtn.setOnClickListener {
-            // Get the FragmentManager
-            val fragmentManager = parentFragmentManager
-
-            // Pop the current fragment and return to the previous one
-            fragmentManager.popBackStack()
         }
 
     return view

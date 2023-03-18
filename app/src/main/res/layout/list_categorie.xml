@@ -6,5 +6,6 @@
     android:padding="15dp"
     android:text="TextView"
     android:textColor="@color/black"
-    android:textSize="18sp"
-    android:textStyle="bold" />
+    android:textSize="25sp"
+    android:fontFamily="@font/f7"
+    />

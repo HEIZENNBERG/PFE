@@ -6,28 +6,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="15dp"
-        android:elevation="5dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="20dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#693C5E">
+            >
 
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/stagaireImage"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/profile" />
+                android:src="@drawable/entreprise" />
 
             <TextView
                 android:id="@+id/stagaireName"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Issam ERRAFIY"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/stagaireImage"
@@ -48,7 +48,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:text="Specialite de stagere"
-                android:textColor="@color/white"
+                android:textColor="#E3E2E2"
                 app:layout_constraintStart_toEndOf="@+id/stagaireImage"
                 app:layout_constraintTop_toBottomOf="@+id/stagaireName" />
 
@@ -56,13 +56,12 @@
                 android:id="@+id/confirmation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:text="0000"
-                android:textColor="@color/white"
+                android:textColor="#E8E8E8"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/stagaireImage"
-                app:layout_constraintTop_toBottomOf="@+id/stagaireDiplome" />
+                app:layout_constraintEnd_toEndOf="@+id/stagaireImage"
+                app:layout_constraintStart_toStartOf="@+id/stagaireImage"
+                app:layout_constraintTop_toBottomOf="@+id/stagaireImage" />
 
             <Button
                 android:id="@+id/accepteDemende"

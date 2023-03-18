@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".WelcomeActivity"
-    android:background="@drawable/welcome_bg">
+    android:background="@drawable/background05">
 
 
     <TextView
@@ -16,6 +16,7 @@
         android:layout_marginTop="40dp"
         android:text="WELCOME"
         android:textColor="@color/white"
+        android:fontFamily="@font/f8"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +26,12 @@
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="12dp"
         android:text="LOGIN"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

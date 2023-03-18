@@ -1,10 +1,12 @@
 package com.example.my_pfe
 
 import android.annotation.SuppressLint
+import android.database.DataSetObserver
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +19,8 @@ import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
-class EntrepriseAdapter(private val entreprisesList :ArrayList<Entreprise> ) : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt>() {
+class EntrepriseAdapter(private val entreprisesList :ArrayList<Entreprise> ) : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt>(),
+    Adapter {
 
     private var filteredList: ArrayList<Entreprise> = ArrayList()
 
@@ -84,6 +87,34 @@ class EntrepriseAdapter(private val entreprisesList :ArrayList<Entreprise> ) : R
         val entrepriseLogo : ImageView = itemView.findViewById(R.id.entrepriseLogo2)
         val entrepriseTitle : TextView = itemView.findViewById(R.id.entrepriseTitle)
         val entrepriseDescription : TextView = itemView.findViewById(R.id.entrepriseCategorie)
+    }
+
+    override fun registerDataSetObserver(observer: DataSetObserver?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun unregisterDataSetObserver(observer: DataSetObserver?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getCount(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItem(position: Int): Any {
+        TODO("Not yet implemented")
+    }
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        TODO("Not yet implemented")
+    }
+
+    override fun getViewTypeCount(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun isEmpty(): Boolean {
+        TODO("Not yet implemented")
     }
 
 }

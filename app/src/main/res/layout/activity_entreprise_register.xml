@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_bg"
+    android:background="@drawable/background05"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="25dp"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:cardCornerRadius="30dp"
-        app:cardElevation="10dp">
+        app:cardElevation="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,8 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="REGISTER"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="30sp"
+                android:fontFamily="@font/f7"
+                android:textColor="@color/black"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"

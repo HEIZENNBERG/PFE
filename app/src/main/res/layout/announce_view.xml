@@ -6,11 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="130dp"
         app:cardCornerRadius="15dp"
-        android:elevation="5dp"
+        android:elevation="20dp"
         >
 
 
@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="5dp"
-            android:background="#D5F5E3">
+            >
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/entrepriseLogo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

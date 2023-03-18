@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,13 +22,12 @@ import com.google.firebase.ktx.Firebase
 class EntrepriseFragment : Fragment() {
 
     lateinit var layoutManager : RecyclerView.LayoutManager
-     var adapter : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt> ?= null
+    var adapter : RecyclerView.Adapter<EntrepriseAdapter.ViewHolderEnt> ?= null
+    lateinit var aadapter : Adapter
 
     private lateinit var entrepriseRecyclerView: RecyclerView
     private lateinit var entrepriseList : ArrayList<Entreprise>
     private var db = Firebase.firestore
-
-
 
 
     override fun onCreateView(
@@ -59,6 +59,8 @@ class EntrepriseFragment : Fragment() {
                         entrepriseList.add(entreprise)
                     }
                 }
+                aadapter = EntrepriseAdapter(entrepriseList)
+
                 adapter = EntrepriseAdapter(entrepriseList)
                 entrepriseRecyclerView.adapter = adapter
 
@@ -89,9 +91,6 @@ class EntrepriseFragment : Fragment() {
 
             }
         })
-
-
-
 
 
     }
