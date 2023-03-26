@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background05"
+    android:background="@drawable/mainbackground"
     android:orientation="vertical"
     android:padding="25dp"
     tools:context=".EntrepriseRegisterPart2">
@@ -141,7 +141,6 @@
                 android:layout_marginTop="10dp"
                 android:text="REGISTER"
                 android:textSize="15sp" />
-
 
             <TextView
                 android:layout_width="wrap_content"

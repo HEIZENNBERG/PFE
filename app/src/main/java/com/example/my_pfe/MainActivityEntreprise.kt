@@ -9,6 +9,7 @@ import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,8 @@ class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
     private lateinit var adapter : announceAdapter
     private var isListnersEnabeld = true
     lateinit var layoutManager : RecyclerView.LayoutManager
+    lateinit var builder : AlertDialog.Builder
+
     private var db = Firebase.firestore
     private var entrepriseId = FirebaseAuth.getInstance().currentUser?.uid
     private var entrepriseRef = db.collection("entreprises").document(entrepriseId!!)
@@ -41,6 +44,8 @@ class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
         announceRecyclerView = view.findViewById(R.id.announceRecyclerView)
         layoutManager = LinearLayoutManager(this)
         announceRecyclerView.layoutManager = layoutManager
+
+        builder = AlertDialog.Builder(this)
 
         announceList = arrayListOf()
 
@@ -83,6 +88,24 @@ class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
                     finish()
                 }
             }
+
+        mainBinding.logOutBtn.setOnClickListener {
+            if(isListnersEnabeld)
+            {
+                builder.setTitle("Log out !!")
+                    .setMessage("you sure want to log out ?")
+                    .setCancelable(true)
+                    .setPositiveButton("yes"){dialogInterface, it->
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    .setNegativeButton("no"){dialogInterface, it->
+                        dialogInterface.cancel()
+                    }.show()
+
+            }
+        }
 
         mainBinding.addAnn.setOnClickListener {
             if(isListnersEnabeld)

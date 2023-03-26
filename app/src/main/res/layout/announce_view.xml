@@ -22,19 +22,20 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/entrepriseLogo"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/entreprise"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/entreprise" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/annonceTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:text="Annonce name / wich poste"
                 android:textColor="@color/black"
                 android:textSize="17sp"
@@ -46,11 +47,11 @@
                 android:id="@+id/entrepriseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="7dp"
-                android:textSize="15sp"
-                android:textColor="@color/black"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
                 android:text="Entreprise"
+                android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogo"
                 app:layout_constraintTop_toBottomOf="@+id/annonceTitle" />
 
@@ -58,7 +59,7 @@
                 android:id="@+id/entrepriseAdress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="7dp"
                 android:text="Adress"
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogo"

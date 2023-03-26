@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="600dp"
             android:background="@drawable/annonce_bg"
             android:orientation="vertical"
             android:padding="7dp"
@@ -106,6 +106,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:text="Departement :"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/annonceDepartement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:text="test teeset"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="Description :"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -116,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
-                android:text="Lorem Ipsum is simply dummy text of thunchanktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                android:text=" publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                 android:textSize="16dp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -137,7 +155,7 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="importer votre CV" />
 
             <Button
@@ -145,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="SUBMIT" />
         </LinearLayout>
 

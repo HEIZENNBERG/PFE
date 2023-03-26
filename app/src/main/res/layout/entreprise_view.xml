@@ -22,23 +22,24 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/entrepriseLogo2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/icon3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/icon3"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/entrepriseTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/f2"
                 android:text="ENTREPRISE NAME"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:fontFamily="@font/f2"
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogo2"
                 app:layout_constraintTop_toTopOf="parent" />
 

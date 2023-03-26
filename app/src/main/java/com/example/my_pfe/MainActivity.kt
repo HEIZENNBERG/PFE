@@ -1,11 +1,15 @@
 package com.example.my_pfe
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
@@ -21,15 +25,20 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : AppCompatActivity() {
 
     private lateinit var fullNameTextView: TextView
+    lateinit var builder : AlertDialog.Builder
+    lateinit var drawarLayout : DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawarLayout = findViewById<DrawerLayout>(R.id.drawarLayout)
-        val imgMenu = findViewById<ImageView>(R.id.imgMenu)
+        builder = AlertDialog.Builder(this)
 
+        drawarLayout = findViewById(R.id.drawarLayout)
+        val imgMenu = findViewById<ImageView>(R.id.imgMenu)
+        val textTitle = findViewById<TextView>(R.id.title)
         val navView = findViewById<NavigationView>(R.id.navDawar)
+
         navView.itemIconTintList = null
         imgMenu.setOnClickListener {
             drawarLayout.openDrawer(GravityCompat.START)
@@ -37,7 +46,22 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this,R.id.fragment)
         NavigationUI.setupWithNavController(navView,navController)
 
-        val textTitle = findViewById<TextView>(R.id.title)
+        navView.menu.findItem(R.id.itemLogout).setOnMenuItemClickListener {
+            builder.setTitle("Log out !!")
+                .setMessage("you sure want to log out ?")
+                .setCancelable(true)
+                .setPositiveButton("yes"){dialogInterface, it->
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton("no"){dialogInterface, it->
+                    dialogInterface.cancel()
+                }.show()
+
+            true
+        }
+
         navController
             .addOnDestinationChangedListener { controller, destination, arguments ->
                 textTitle.text = destination.label
@@ -46,7 +70,27 @@ class MainActivity : AppCompatActivity() {
         fullNameTextView = headerView.findViewById(R.id.fullname)
 
         displayStudentInfo()
+
+       // navView.setNavigationItemSelectedListener {
+        /*    when(it.itemId){
+                R.id.itemLogout ->
+                    builder.setTitle("Log out !!")
+                        .setMessage("you sure want to log out ?")
+                        .setCancelable(true)
+                        .setPositiveButton("yes"){dialogInterface, it->
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        .setNegativeButton("no"){dialogInterface, it->
+                            dialogInterface.cancel()
+                        }.show()
+            }
+            true
+        }*/
     }
+
+
 
     private fun displayStudentInfo() {
         val db = Firebase.firestore

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreen"
-    android:background="@drawable/background05">
+    android:background="@drawable/mainbackground">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SPLASH SCREEN"
+        android:text="MON\n    STAGE"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:fontFamily="@font/f7"

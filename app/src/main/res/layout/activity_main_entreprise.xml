@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    android:background="@drawable/entr_annonce_back"
+    android:background="@drawable/background06"
     android:id="@+id/entrepriseMainMenu">
 
     <LinearLayout
@@ -23,10 +23,11 @@
             android:layout_height="match_parent"
             android:layout_weight="3">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/entrepriseProfile"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/entreprise" />
@@ -35,13 +36,25 @@
                 android:id="@+id/entrepriseMainName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="5"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:gravity="center"
                 android:text="Entreprise Name"
-                android:textSize="30sp"
-                android:fontFamily="@font/f8"
+                android:textSize="27sp"
+                android:fontFamily="@font/f6"
                 android:textColor="@color/white"/>
+
+            <ImageButton
+                android:id="@+id/logOutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                app:srcCompat="@drawable/baseline_logout_24" />
+
 
         </LinearLayout>
 
@@ -75,12 +88,12 @@
         android:id="@+id/addAnn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
-        app:backgroundTint="#FFEB3B"
+        app:backgroundTint="#3f2b96"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/baseline_add_24" />
 
 

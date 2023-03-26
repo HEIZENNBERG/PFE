@@ -45,9 +45,9 @@
             android:name=".EntrepriseRegisterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
+        <!--<activity
             android:name=".WelcomeActivity"
-            android:exported="false"/>
+            android:exported="false"/>-->
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
