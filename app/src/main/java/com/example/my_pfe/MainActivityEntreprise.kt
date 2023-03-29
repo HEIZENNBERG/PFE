@@ -8,6 +8,7 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -117,6 +118,25 @@ class MainActivityEntreprise : AppCompatActivity(), OnItemClickListener {
 
         }
         displayHeaderInfo(view)
+
+
+
+
+        val searchView = view.findViewById<SearchView>(R.id.entrepriseSearch)
+
+
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                (adapter as? announceAdapter)?.filter(newText)
+                return true
+
+            }
+        })
     }
 
     fun enableListeners() {

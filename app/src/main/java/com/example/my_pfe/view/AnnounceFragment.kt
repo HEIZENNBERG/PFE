@@ -78,7 +78,7 @@ class AnnounceFragment : Fragment() {
 
         override fun onQueryTextChange(newText: String): Boolean {
 
-            (adapter as CustomAdapter).filterAnnounce(newText)
+            (adapter as? CustomAdapter)?.filterAnnounce(newText)
             return true
 
 

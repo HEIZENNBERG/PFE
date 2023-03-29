@@ -74,19 +74,13 @@ class EntrepriseFragment : Fragment() {
         // when the search is used the filter function in adapter called
         val searchView = view.findViewById<SearchView>(R.id.entrepriseSearch)
 
-
-
-
-        //Make sure to replace TAG with a string that identifies your class for logging purposes.
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String): Boolean {
-
+                (adapter as? EntrepriseAdapter)?.filter(newText)
                 return true
 
             }

@@ -17,17 +17,18 @@
             android:id="@+id/myConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/entrepriseLogoNotif"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/entreprise"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/entreprise" />
+                app:layout_constraintVertical_bias="0.4" />
 
             <TextView
                 android:id="@+id/entrepriseTitleNotif"
@@ -55,25 +56,28 @@
 
             <TextView
                 android:id="@+id/confirmation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="90dp"
+                android:layout_width="115dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="5dp"
                 android:text="not answered"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/entrepriseLogoNotif"
-                app:layout_constraintTop_toBottomOf="@+id/annonceNotif" />
+                app:layout_constraintTop_toBottomOf="@+id/annonceNotif"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/dateDemande"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/0000"
-                app:layout_constraintBottom_toBottomOf="@+id/annonceNotif"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton"
-                app:layout_constraintStart_toEndOf="@+id/annonceNotif"
-                app:layout_constraintTop_toTopOf="@+id/annonceNotif" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.866"
+                app:layout_constraintStart_toEndOf="@+id/confirmation"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton"
+                app:layout_constraintVertical_bias="0.826" />
 
             <ImageButton
                 android:id="@+id/imageButton"

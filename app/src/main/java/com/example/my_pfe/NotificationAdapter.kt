@@ -55,7 +55,7 @@ class NotificationAdapter(private val demandesList :ArrayList<Demande>) : Recycl
             holder.layout.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.grey))
         }
         else if (demandesList[position].confirm == "rejecte") {
-            holder.layout.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.red))
+            holder.layout.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.redo))
         }
 
     }

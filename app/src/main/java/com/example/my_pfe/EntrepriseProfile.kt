@@ -10,6 +10,7 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.my_pfe.databinding.ActivityEntrepriseProfileBinding
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -49,7 +50,38 @@ class EntrepriseProfile : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
+        val editButton =  view?.findViewById<Button>(R.id.editdButton)
+        editButton!!.setOnClickListener {
+            val db = Firebase.firestore
+            val entrepriseId = FirebaseAuth.getInstance().currentUser?.uid
+            val entrepriseRef = db.collection("entreprises").document(entrepriseId!!)
+
+
+            val adressTextView = view.findViewById<TextInputLayout>(R.id.entAdressProfileEdit)
+            val numeroTextView = view.findViewById<TextInputLayout>(R.id.entNTProfileEdit)
+            val descriptionTV = view.findViewById<TextInputLayout>(R.id.entDescriptionProfileEdit)
+
+            val adress = adressTextView.editText?.text.toString()
+            val numero = numeroTextView.editText?.text.toString()
+            val description = descriptionTV.editText?.text.toString()
+            entrepriseRef.update(
+                mapOf(
+                    "categorie" to categorie_holder,
+                    "adress" to adress,
+                    "numero" to numero,
+                    "description" to description
+                )
+            ).addOnSuccessListener {
+                Toast.makeText(this, "Votre data est bien modifier", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener { e ->
+                Toast.makeText(this, "Un error est occurer !", Toast.LENGTH_LONG).show()
+            }
+        }
         displayEntrepriseInfo(view)
+
+
     }
 
 
@@ -65,7 +97,7 @@ class EntrepriseProfile : AppCompatActivity() {
                 if (document != null && document.exists()) {
 
                     val nom = document.getString("nom")
-                    //val categorie = document.getString("categorie")
+                    val categorie = document.getString("categorie")
                     val email = document.getString("email")
                     val description = document.getString("description")
                     val numero = document.getString("numero")
@@ -80,18 +112,16 @@ class EntrepriseProfile : AppCompatActivity() {
                         .load(imageUrl)
                         .into(imageView)
 
-                    // get references to TextViews
-                    //val categoryTextView = view?.findViewById<TextInputEditText>(R.id.entCategorieProfileEdit)
-                   // val test = entrepriseProfileBinding.entCategorieProfileEdit
+
                     val upEmailTextView = entrepriseProfileBinding.profileEmail
                     val adressTextView = entrepriseProfileBinding.entAdressProfileEdit
                     val nomTextView = entrepriseProfileBinding.entrepriseProfileName
                     val descriptionTextView = entrepriseProfileBinding.entDescriptionProfileEdit
-                    //val emailTextView = entrepriseProfileBinding.emailProfileEdit
                     val numeroTextView =  entrepriseProfileBinding.entNTProfileEdit
 
                     // set text values of TextViews
-                    //test.editText?.setText(categorie)
+                    val autoCompleteTextView = findViewById<TextInputLayout>(R.id.categorieEditText)
+                    autoCompleteTextView.hint = categorie
                     upEmailTextView?.text = email
                     descriptionTextView.editText?.setText(description)
                     nomTextView?.text = nom

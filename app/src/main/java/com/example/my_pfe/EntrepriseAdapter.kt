@@ -68,7 +68,6 @@ class EntrepriseAdapter(private val entreprisesList :ArrayList<Entreprise> ) : R
     }
 
 
-    //
     fun filter(query: String) {
         filteredList.clear()
         if (query.isEmpty()) {

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.my_pfe.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -35,7 +36,29 @@ class ProfileFragment : Fragment() {
         //edit profil here hhh
         val editButton =  view?.findViewById<Button>(R.id.editdButton)
         editButton!!.setOnClickListener {
+            val db = Firebase.firestore
+            val studentId = FirebaseAuth.getInstance().currentUser?.uid
+            val studentRef = db.collection("students").document(studentId!!)
 
+            val nomTextView = view.findViewById<TextInputLayout>(R.id.nomProfileEdit)
+            val prenomTextView = view.findViewById<TextInputLayout>(R.id.prenomProfileEdit)
+            val numeroTextView = view.findViewById<TextInputLayout>(R.id.phoneNumProfileEdit)
+
+            val nom = nomTextView.editText?.text.toString()
+            val prenom = prenomTextView.editText?.text.toString()
+            val numero = numeroTextView.editText?.text.toString()
+
+            studentRef.update(
+                mapOf(
+                    "nom" to nom,
+                    "prenom" to prenom,
+                    "numero" to numero
+                )
+            ).addOnSuccessListener {
+                Toast.makeText(context, "Votre data est bien modifier", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener { e ->
+                Toast.makeText(context, "Un error est occurer !", Toast.LENGTH_LONG).show()
+            }
         }
 
 
@@ -86,9 +109,4 @@ class ProfileFragment : Fragment() {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
-
-
-
-
-
 }

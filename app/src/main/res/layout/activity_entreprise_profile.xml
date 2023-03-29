@@ -144,7 +144,7 @@
                                     android:layout_marginTop="7dp"
                                     android:hint="ADRESS"
                                     app:startIconContentDescription="test"
-                                    app:startIconDrawable="@drawable/location_icon">>
+                                    app:startIconDrawable="@drawable/location_icon">
 
                                     <com.google.android.material.textfield.TextInputEditText
                                         android:layout_width="match_parent"
@@ -166,9 +166,9 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
-                                    android:hint="NUM TELEFON"
+                                    android:hint="NUM TELEPHONE"
                                     app:startIconContentDescription="test"
-                                    app:startIconDrawable="@drawable/baseline_phone_24">>
+                                    app:startIconDrawable="@drawable/baseline_phone_24">
 
                                     <com.google.android.material.textfield.TextInputEditText
                                         android:layout_width="match_parent"

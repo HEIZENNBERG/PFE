@@ -50,9 +50,6 @@ class AnnonceInfosFragment : Fragment() {
 
         val imageView = view.findViewById<ImageView>(R.id.entrepriseLogo)
 
-        // Create an array of items to display
-
-
 
 
         Glide.with(this)
@@ -60,12 +57,12 @@ class AnnonceInfosFragment : Fragment() {
             .into(imageView)
 
         // Now you can use the entreprise object to display the additional information in your UI
-        // For example, you can update the text views like this:
+
         view.findViewById<TextView>(R.id.annonceTitle).text = annonce.nomAnnonce
         view.findViewById<TextView>(R.id.entrepriseName2).text = annonce.nom
         view.findViewById<TextView>(R.id.annonceDescription).text = annonce.descriptionAnnonce
         view.findViewById<TextView>(R.id.entrepriseDescrition).text = annonce.email
-
+        view.findViewById<TextView>(R.id.annonceDepartement).text = annonce.departement
 
     }
 
