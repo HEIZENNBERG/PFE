@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.NonDisposableHandle.parent
 import java.text.SimpleDateFormat
 
 class NotificationAdapter(private val demandesList :ArrayList<Demande>) : RecyclerView.Adapter<NotificationAdapter.ViewHolder3>() {
@@ -77,7 +79,27 @@ class NotificationAdapter(private val demandesList :ArrayList<Demande>) : Recycl
             delete.setOnClickListener {
                 val annonceId = demandesList[adapterPosition].announceID.toString()
 
-                getAnnonceById(annonceId) { annonce ->
+                var builder = AlertDialog.Builder(it.context)
+
+                    delete.setOnClickListener {
+                        val annonceId = demandesList[adapterPosition].announceID.toString()
+
+
+                        builder.setTitle("Log out !!")
+                            .setMessage("you sure want to delete demand ?")
+                            .setCancelable(true)
+                            .setPositiveButton("yes"){dialogInterface, it->
+                                //delete the notification
+                            }
+                            .setNegativeButton("no"){dialogInterface, it->
+                                dialogInterface.cancel()
+                            }.show()
+
+                        true
+                    }
+
+
+                    getAnnonceById(annonceId) { annonce ->
                     if (annonce != null) {
                         val demandeId = FirebaseAuth.getInstance().currentUser?.uid.toString()
                         val db = Firebase.firestore

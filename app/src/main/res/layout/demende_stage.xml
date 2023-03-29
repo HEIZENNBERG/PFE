@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="7dp"
-                android:text="Issam ERRAFIY"
+                android:text="Stagaire name"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"

@@ -52,7 +52,7 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ETUDIANT"
+                    android:text="STUDENT"
                     android:textSize="15sp" />
 
                 <Button
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="ENTREPRISE"
+                    android:text="COMPANY"
                     android:textColor="@color/silver"
                     android:textSize="15sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="Numero de telephone">
+                android:hint="Phone number">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
