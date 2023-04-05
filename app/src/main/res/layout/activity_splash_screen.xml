@@ -7,6 +7,16 @@
     tools:context=".SplashScreen"
     android:background="@drawable/mainbackground">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/entreprise" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -20,13 +30,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/scrnicon1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
